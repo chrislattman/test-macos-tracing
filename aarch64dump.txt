@@ -1,0 +1,38 @@
+
+child:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100003f28 <_main>:
+100003f28: d10083ff    	sub	sp, sp, #32
+100003f2c: a9017bfd    	stp	x29, x30, [sp, #16]
+100003f30: 910043fd    	add	x29, sp, #16
+100003f34: 52800008    	mov	w8, #0
+100003f38: b9000be8    	str	w8, [sp, #8]
+100003f3c: b81fc3bf    	stur	wzr, [x29, #-4]
+100003f40: 52800020    	mov	w0, #1
+100003f44: 52800081    	mov	w1, #4
+100003f48: 94000005    	bl	0x100003f5c <_func1>
+100003f4c: b9400be0    	ldr	w0, [sp, #8]
+100003f50: a9417bfd    	ldp	x29, x30, [sp, #16]
+100003f54: 910083ff    	add	sp, sp, #32
+100003f58: d65f03c0    	ret
+
+0000000100003f5c <_func1>:
+100003f5c: d10043ff    	sub	sp, sp, #16
+100003f60: b9000fe0    	str	w0, [sp, #12]
+100003f64: b9000be1    	str	w1, [sp, #8]
+100003f68: b9400be8    	ldr	w8, [sp, #8]
+100003f6c: b90007e8    	str	w8, [sp, #4]
+100003f70: 14000001    	b	0x100003f74 <_func1+0x18>
+100003f74: b9400fe8    	ldr	w8, [sp, #12]
+100003f78: 71019108    	subs	w8, w8, #100
+100003f7c: 1a9f17e8    	cset	w8, eq
+100003f80: 370000c8    	tbnz	w8, #0, 0x100003f98 <_func1+0x3c>
+100003f84: 14000001    	b	0x100003f88 <_func1+0x2c>
+100003f88: b94007e8    	ldr	w8, [sp, #4]
+100003f8c: 11000508    	add	w8, w8, #1
+100003f90: b90007e8    	str	w8, [sp, #4]
+100003f94: 17fffff8    	b	0x100003f74 <_func1+0x18>
+100003f98: 910043ff    	add	sp, sp, #16
+100003f9c: d65f03c0    	ret
