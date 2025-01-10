@@ -53,6 +53,13 @@ int main(void)
         printf("arg2 = *(sp + 8) = %d\n", *((int *) data));
         vm_write(child_task_port, reg_state.__sp + 12, (vm_offset_t) &value, sizeof(int));
 #endif
+        // ptrace(PT_STEP, pid, (caddr_t) 1, 0);
+        // thread_get_state(thread_list[0], ..., (thread_state_t) &reg_state, &sc);
+        // from here read data from the memory address stored in either
+        // reg_state.__rip (amd64) or reg_state.__pc (arm64)
+        // this is how you can tell a function is about to be called (callq/bl)
+        // optionally use libcapstone to decode the bytes into a human-readable
+        // instruction
         ptrace(PT_CONTINUE, pid, (caddr_t) 1, 0);
         wait(NULL);
     }
